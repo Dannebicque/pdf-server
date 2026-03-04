@@ -1,0 +1,14 @@
+[Unit]
+Description=PDF Server Worker (SQLite queue)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/pdf-server
+EnvironmentFile=/etc/pdf-server.env
+ExecStart=/opt/pdf-server/.venv/bin/python scripts/worker.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
